@@ -7,3 +7,8 @@ class SaccoManager(models.Model):
     Email=models.EmailField()
     Phone=models.IntegerField(max_length=10)
     # Id=models.FileField(max_length=10)
+
+    def __str__(self):
+        return self.first_name
+    class Meta:
+        ordering = ['first_name']
