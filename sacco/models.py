@@ -5,7 +5,7 @@ class SaccoManager(models.Model):
     Fname=models.CharField(max_length=10)
     Lname=models.CharField(max_length=10)
     Email=models.EmailField()
-    Phone=models.IntegerField(max_length=10)
+    Phone=models.IntegerField()
     # Id=models.FileField(max_length=10)
 
     def __str__(self):
@@ -19,22 +19,23 @@ class MatatuDriver(models.Model):
     Lname1=models.CharField(max_length=10)
     Mobile=models.IntegerField()
     Dlincence=models.IntegerField()
-    Manager = models.ForeignKey(SaccoManager)
+    Manager = models.ForeignKey(SaccoManager,on_delete=models.CASCADE)
+
     def __str__(self):
-        return self.Fname
+        return self.Fname1
     class Meta:
-        ordering = ['Fname']
+        ordering = ['Fname1']
 
 
 class MatatuConductor(models.Model):
     Fname12=models.CharField(max_length=10)
     Lname12=models.CharField(max_length=10)
     Mobile=models.IntegerField()
-    Driver = models.ForeignKey(MatatuDriver)
+    Driver = models.ForeignKey(MatatuDriver,on_delete=models.CASCADE)
     def __str__(self):
-        return self.Fname
+        return self.Fname12
     class Meta:
-        ordering = ['Fname']
+        ordering = ['Fname12']
 
 
 class MatatuCollect(models.Model):
@@ -58,3 +59,8 @@ class SaccoMatatu(models.Model):
     ('black','BLACK'))
     Snumber=models.IntegerField()
     Ntrips=models.IntegerField()
+
+    def __str__(self):
+        return self.Pnumber
+    class Meta:
+        ordering = ['Pnumber']
