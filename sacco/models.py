@@ -12,3 +12,10 @@ class SaccoManager(models.Model):
         return self.first_name
     class Meta:
         ordering = ['first_name']
+
+class MatatuDriver(models.Model):
+    Fname1=models.CharField(max_length=10)
+    Lname1=models.CharField(max_length=10)
+    Mobile=models.IntegerField()
+    Dlincence=models.IntegerField()
+    Manager = models.ForeignKey(SaccoManager)
